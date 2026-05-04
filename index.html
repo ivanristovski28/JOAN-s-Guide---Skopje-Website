@@ -177,18 +177,18 @@ body.menu-open{overflow:hidden}
 }
 
 /* ━━━━━━━━━━━ ABOUT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#about{position:relative;padding:5rem var(--px) 0;background:var(--navy);overflow:visible}
+#about{position:relative;padding:5rem var(--px) 0;background:var(--navy);overflow-x:hidden}
 #about::before{content:'';position:absolute;top:-200px;right:-120px;width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,.06) 0%,transparent 68%);pointer-events:none;z-index:0}
 #about::after{content:'';position:absolute;bottom:-100px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(245,158,11,.04) 0%,transparent 70%);pointer-events:none;z-index:0}
-.about-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;position:relative;z-index:1}
-.about-gallery{position:relative;height:280px;overflow:visible}
+.about-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;position:relative;z-index:1;overflow:hidden}
+.about-gallery{position:relative;height:280px;overflow:visible;width:100%;max-width:100%}
 .about-gallery-main{position:absolute;top:0;left:0;width:72%;height:75%;border-radius:6px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.55);z-index:2}
 .about-gallery-main img{width:100%;height:100%;object-fit:cover;display:block}
 .about-gallery-b{position:absolute;bottom:0;left:18%;width:55%;height:46%;border-radius:6px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.5);z-index:3;border:2px solid var(--navy)}
 .about-gallery-b img{width:100%;height:100%;object-fit:cover;display:block}
 .about-gallery-c{position:absolute;top:10%;right:0;width:38%;height:42%;border-radius:6px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.5);z-index:1;border:2px solid var(--navy)}
 .about-gallery-c img{width:100%;height:100%;object-fit:cover;display:block}
-.about-gallery-badge{position:absolute;bottom:16%;right:-2px;z-index:4;perspective:900px;cursor:default}
+.about-gallery-badge{position:absolute;bottom:16%;right:2px;z-index:4;perspective:900px;cursor:default}
 .badge-inner{position:relative;transform:rotate(-2deg)}
 .badge-front,.badge-back{padding:.75rem 1.2rem;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;white-space:nowrap;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;min-width:130px}
 .badge-front{background:var(--gold);color:var(--navy);box-shadow:0 12px 36px rgba(245,158,11,.5)}
@@ -218,8 +218,10 @@ body.menu-open{overflow:hidden}
 }
 @media(min-width:1024px){
   #about{padding:8rem 5vw 0}
-  .about-wrap{grid-template-columns:1.4fr 1fr;gap:7rem}
-  .about-gallery{height:560px;max-width:none;margin:0}
+  .about-wrap{grid-template-columns:1.4fr 1fr;gap:7rem;overflow:visible}
+  /* Restore original order: gallery left, text right */
+  .about-gallery{order:1;height:560px;max-width:none;margin:0;overflow:visible}
+  .about-text{order:2}
   .about-gallery-main{width:72%;height:78%}
   .about-text p{font-size:1.05rem;line-height:2}
 }
@@ -500,6 +502,15 @@ footer{background:#070C14;padding:2.5rem var(--px);border-top:1px solid rgba(245
   <!-- ABOUT -->
   <section id="about" style="background:var(--navy)">
     <div class="about-wrap">
+      <!-- TEXT HEADER (shown above gallery on mobile) -->
+      <div class="about-text reveal d2">
+        <span class="eyebrow">About Us</span>
+        <h2>Our Home,<br><em>Your Lens</em></h2>
+        <div class="about-divider"></div>
+        <p>We are a family-run business built on trust, hard work, and genuine care for every guest who stays with us. Joan Apartments was created with one simple goal: to offer comfort, warmth, and a place where you feel welcome from the moment you arrive.</p>
+        <p>Whether you are here for one night or a longer stay, we want you to feel at home and enjoy the city like a local.</p>
+      </div>
+
       <!-- IMAGE COLLAGE -->
       <div class="about-gallery reveal">
         <div class="about-gallery-main">
@@ -518,15 +529,6 @@ footer{background:#070C14;padding:2.5rem var(--px);border-top:1px solid rgba(245
             <div class="badge-back">New Experiences</div>
           </div>
         </div>
-      </div>
-
-      <!-- TEXT -->
-      <div class="about-text reveal d2">
-        <span class="eyebrow">About Us</span>
-        <h2>Our Home,<br><em>Your Lens</em></h2>
-        <div class="about-divider"></div>
-        <p>We are a family-run business built on trust, hard work, and genuine care for every guest who stays with us. Joan Apartments was created with one simple goal: to offer comfort, warmth, and a place where you feel welcome from the moment you arrive.</p>
-        <p>Whether you are here for one night or a longer stay, we want you to feel at home and enjoy the city like a local.</p>
       </div>
     </div>
 
